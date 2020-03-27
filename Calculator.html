@@ -1,0 +1,210 @@
+<html >
+<head>
+    
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="st.css">
+     
+    <style>
+        button
+{
+    border: black solid;
+    padding: 40px;
+    margin: 20px;
+    font-size: x-large;
+    font: bold;
+}
+        
+    </style>
+</head>
+<body>
+
+        <div class="container">
+
+            <h1 class="title">Calculator</h1>
+            <div class="row">
+             <div class="col-sm-8">
+            <input type="text" style="width: 100%;height: 40px;" id="v1">
+            
+            </div>
+            </div>
+            <div class="row">
+           <div class="col-sm-2">
+               <button class="button" value="1" id="n1" onclick="show(1)">1</button>
+           </div>
+           <div class="col-sm-2">
+            <button class="button" value="2" id="n2" onclick="show(2)">2</button>
+           </div>
+           <div class="col-sm-2">
+            <button class="button" value="3" id="n3" onclick="show(3)">3</button>
+           </div>
+           <div class="col-sm-2">
+            <button class="button" value="n4" onclick="show(4)">4</button>
+           </div>
+       </div>
+       <div class="row">
+        <div class="col-sm-2">
+            <button class="button" value="5" id="n5" onclick="show(5)">5</button>
+        </div>
+        <div class="col-sm-2">
+         <button class="button" value="6" id="n6" onclick="show(6)">6</button>
+        </div>
+        <div class="col-sm-2">
+         <button class="button" value="7" id="n7" onclick="show(7)">7</button>
+        </div>
+        <div class="col-sm-2">
+         <button class="button" value="8" id="n8" onclick="show(8)">8</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <button class="button" value="9" id="n9" onclick="show(9)">9</button>
+        </div>
+        <div class="col-sm-2">
+            <button class="button" value="0" id="n0" onclick="show(0)">0</button>
+        
+        </div>
+        <div class="col-sm-2">
+            <button class="button" onclick="cleared()">C</button>
+        </div>
+        <div class="col-sm-2">
+            
+        <button class="button" onclick="cal()">=</button>
+        </div>
+
+
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <button class="button" value="add" onclick="sig(1)">+</button>
+        </div>
+        <div class="col-sm-2">
+         <button class="button" value="sub" onclick="sig(2)">-</button>
+        </div>
+        <div class="col-sm-2">
+         <button class="button" value="div" onclick="sig(3)">*</button>
+        </div>
+        <div class="col-sm-2">
+         <button class="button" value="mul" onclick="sig(4)">/</button>
+        </div>
+    </div>
+    <h1 class="title">Output</h1>
+    <div class="row">
+     <div class="col-sm-8">
+    <input type="text" style="width: 100%;height: 40px;" id="v2">
+    
+    </div>
+    </div>
+
+
+        
+    </div>
+        <script>
+
+            
+    var count=0;
+    var ans=0;
+    var value1=0;
+    var sign=0;
+    var value2=0;
+function show(a)
+{
+    console.log(a);
+    if(count==0)
+    {
+    document.getElementById("v1").value=a;
+    document.getElementById("v2").value=a;
+    
+        count++;
+    }
+    else 
+    {
+        document.getElementById("v1").value=document.getElementById("v1").value+a;
+        document.getElementById("v2").value=document.getElementById("v2").value+a;
+    }
+}
+function sig(d)
+{
+    value1=document.getElementById("v1").value;
+    document.getElementById("v1").value=null;
+    console.log("hello");
+    if(d==1)
+    {
+        sign="+";
+    }
+    else if(d ==2)
+    {
+        sign="-";
+    }
+    else if(d ==3)
+    {
+        sign="*";
+    }
+    else 
+    {
+        sign="/";
+    }
+  
+    document.getElementById("v2").value=document.getElementById("v2").value+sign;
+    count=1;
+}
+
+function cleared()
+{
+    value1=0;
+    document.getElementById("v1").value=null;
+    document.getElementById("v2").value=null;
+    
+}
+
+function cal()
+{
+
+
+    value2=document.getElementById("v1").value;
+   
+    console.log(value2);
+    if(sign == "+")
+    {
+        ans=parseInt(value1) + parseInt(value2);
+    }
+    
+  else  if(sign == "-")
+    {
+        ans=value1-value2;
+    }
+    
+    else if(sign =="/")
+    {
+        ans=value1/value2;
+    }
+    
+    else if (sign == "*")
+    {
+        ans=value1*value2;
+    }
+    else
+    {
+        ErrorEvent.log("select sign");
+    }
+  sign=null;
+    
+    document.getElementById("v1").value=ans;
+    
+    document.getElementById("v2").value=document.getElementById("v2").value+"="+ans;
+    
+
+    
+}
+
+
+
+
+        </script>
+
+</body>
+</html>
