@@ -8,9 +8,13 @@ h1
 }
 div
 {
-    margin-top: 10px;
+    margin-top: 15px;
 }
 #carousel
 {
     size: 25%;
  }
+.panel-body
+{
+    display: inline;
+}
